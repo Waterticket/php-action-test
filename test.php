@@ -2,7 +2,7 @@
 
 class testClass {
   public static function test(){
-    echo "Hello, github!"
+    echo "Hello, github!";
   }
 }
 
