@@ -19,5 +19,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: PHP syntax checker ${{ matrix.php }}
-        uses: prestashop/github-action-php-lint/ ${{ matrix.php }} @master
+      
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: phpcs
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          php_codesniffer: true
+          # Optional: Ignore warnings
+          php_codesniffer_args: "-n"
