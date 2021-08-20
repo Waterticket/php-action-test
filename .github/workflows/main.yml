@@ -19,21 +19,18 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '7.2', '7.3', '7.4', '8.0' ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    name: PHP ${{ matrix.php }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: PHP syntax checker 7.2
-        uses: prestashop/github-action-php-lint/7.2@master
-        
-      - name: PHP syntax checker 7.3
-        uses: prestashop/github-action-php-lint/7.3@master
-        
-      - name: PHP syntax checker 7.4
-        uses: prestashop/github-action-php-lint/7.4@master
-      
-      - name: PHP syntax checker 8.0
-        uses: prestashop/github-action-php-lint/8.0@master
+      - name: PHP syntax checker ${{ matrix.php }}
+        uses: prestashop/github-action-php-lint/${{ matrix.php }}@master
