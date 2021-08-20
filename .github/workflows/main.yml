@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.2','7.3','7.4','8.0']
+        php: [ '7.2', '7.3', '7.4', '8.0' ]
 
     name: PHP ${{ matrix.php }}
     steps:
@@ -20,4 +20,4 @@ jobs:
         with:
           fetch-depth: 0
       - name: PHP syntax checker ${{ matrix.php }}
-        uses: prestashop/github-action-php-lint/${{ matrix.php }}@master
+        uses: prestashop/github-action-php-lint/${{ matrix.php }}
